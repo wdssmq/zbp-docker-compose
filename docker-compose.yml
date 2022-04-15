@@ -1,0 +1,50 @@
+version: '3'
+services:
+
+    # Z-BlogPHP
+    zbp:
+        # build: ./build/zblogphp
+        image: wdssmq/zblogphp
+        restart: always
+        ports:
+            - "80:80"
+        env_file:
+            - ./conf/common.env
+            - ./conf/site_zbp.env
+        environment:
+            ZC_DB_HOST: MySQL
+            ZC_DB_NAME: docker_zbp
+            ZC_DB_USER: root
+            ZC_SKIP_TC_PLUGINS: 1
+            TZ: "Asia/Shanghai"
+        volumes:
+            - ./www:/app
+            - ./log/nginx_zbp/error.log:/var/log/nginx/error.log:rw
+            # - ./log/nginx_zbp/logs:/var/lib/nginx/logs:rw
+        depends_on:
+            - MySQL
+        # links:
+        #   - MySQL
+        networks:
+            - net_web
+
+    # MySQL 5.7
+    MySQL:
+        image: mysql/mysql-server:5.7
+        restart: always
+        ports:
+            - "3306:3306"
+        env_file:
+            - ./conf/common.env
+        environment:
+            MYSQL_ROOT_HOST: 172.%.%.%
+            TZ: "Asia/Shanghai"
+        volumes:
+            - ./data:/var/lib/mysql:rw
+            - ./log/mysql/:/var/log/mysql/:rw
+        networks:
+            - net_web
+
+networks:
+    net_web:
+        external: false
