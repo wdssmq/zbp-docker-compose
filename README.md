@@ -62,3 +62,37 @@ docker logs $container_name
 # 进入容器内部
 docker exec -it $container_name /bin/bash
 ```
+
+### PHPMyAdmin 连接管理数据库
+
+如果需要 PHPMyAdmin 可单独配置：
+
+```bash
+# 强制删除容器
+docker rm --force PHPMyAdmin
+docker run --name PHPMyAdmin \
+  --network=zbp-dc_net_web \
+  -p 9100:80 \
+  -e PMA_HOST=MySQL \
+  -d phpmyadmin/phpmyadmin
+
+# 关闭（但不删除）
+docker stop PHPMyAdmin
+# 启用
+docker start PHPMyAdmin
+```
+
+注：
+
+- `-e PMA_HOST=MySQL`中`MySQL`为 docker-compose.yml 文件内定义的服务名；
+- `--network=zbp-dc_net_web`实际所需需要的值可以执行`docker network ls`查看；
+  - 就是使用执行路径文件夹的名字作为前缀，容器名也是；
+
+```bash
+docker network ls
+# NETWORK ID     NAME             DRIVER    SCOPE
+# 8fe33d9c54d0   bridge           bridge    local
+# 4579b81d15b4   host             host      local
+# 2e9e3da577ef   none             null      local
+# a620eec8f4dc   zbp-dc_net_web   bridge    local
+```
