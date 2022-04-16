@@ -44,6 +44,9 @@ docker-compose up -d
 4、其他命令
 
 ```bash
+# 查看配置
+docker-compose config
+
 # 停止服务
 docker-compose stop
 
