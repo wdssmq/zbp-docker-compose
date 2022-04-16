@@ -19,8 +19,8 @@ services:
             TZ: "Asia/Shanghai"
         volumes:
             - ./www/zbp:/app
-            - ./log/nginx_zbp/error.log:/var/log/nginx/error.log:rw
-            # - ./log/nginx_zbp/logs:/var/lib/nginx/logs:rw
+            # - ./log/nginx_zbp/:/var/log/nginx:rw
+            # - ./log/nginx_zbp/logs2:/var/lib/nginx/logs:rw
         depends_on:
             - MySQL
         # links:
