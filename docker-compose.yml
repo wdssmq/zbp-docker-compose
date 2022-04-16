@@ -18,7 +18,7 @@ services:
             ZC_SKIP_TC_PLUGINS: 1
             TZ: "Asia/Shanghai"
         volumes:
-            - ./www:/app
+            - ./www/zbp:/app
             - ./log/nginx_zbp/error.log:/var/log/nginx/error.log:rw
             # - ./log/nginx_zbp/logs:/var/lib/nginx/logs:rw
         depends_on:
