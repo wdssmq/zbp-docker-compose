@@ -8,6 +8,18 @@ Z-BlogPHP：`https://github.com/zblogcn/zblogphp-tencent-openapp-docker`
 
 MySQL：`mysql/mysql-server:5.7`
 
+## 前置
+
+```bash
+# 安装 Docker Compose
+sudo curl -L https://github.com/docker/compose/releases/download/v2.4.1/docker-compose-`uname -s`-`uname -m` \
+ -o /usr/local/bin/docker-compose
+sudo chmod +x /usr/local/bin/docker-compose
+docker-compose --version
+```
+
+生成最新版 Docker Compose 安装命令：[https://demo.wdssmq.com/tools/GenShell/](https://demo.wdssmq.com/tools/GenShell/ "生成最新版 Docker Compose 安装命令")
+
 ## 使用
 
 1、拉取项目代码并初始化文件：
