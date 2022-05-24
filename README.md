@@ -59,7 +59,10 @@ docker-compose up -d
 # 查看配置
 docker-compose config
 
-# 停止服务
+# 重启
+docker-compose restart
+
+# 停止
 docker-compose stop
 
 # 完全移除容器
