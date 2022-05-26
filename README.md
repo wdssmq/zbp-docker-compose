@@ -89,6 +89,7 @@ docker run --name PHPMyAdmin \
   --network=zbp-dc_net_web \
   -p 9100:80 \
   -e PMA_HOST=MySQL \
+  -e UPLOAD_LIMIT=4096K \
   -d phpmyadmin/phpmyadmin
 
 # 关闭（但不删除）
@@ -100,6 +101,7 @@ docker start PHPMyAdmin
 注：
 
 - `-e PMA_HOST=MySQL`中`MySQL`为 docker-compose.yml 文件内定义的服务名；
+- `-e UPLOAD_LIMIT=4096K`用于设置导入文件的大小限制，可以按需要设置，比如`20M`；
 - `--network=zbp-dc_net_web`实际所需需要的值可以执行`docker network ls`查看；
   - 就是使用执行路径文件夹的名字作为前缀，容器名也是；
 
