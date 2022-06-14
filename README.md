@@ -78,14 +78,14 @@ docker logs $container_name
 docker exec -it $container_name /bin/bash
 ```
 
-### PHPMyAdmin 连接管理数据库
+### phpMyAdmin 连接管理数据库
 
-如果需要 PHPMyAdmin 可单独配置：
+如果需要 phpMyAdmin 可单独配置：
 
 ```bash
 # 强制删除容器
-docker rm --force PHPMyAdmin
-docker run --name PHPMyAdmin \
+docker rm --force phpMyAdmin
+docker run --name phpMyAdmin \
   --network=zbp-dc_net_web \
   -p 9100:80 \
   -e PMA_HOST=MySQL \
@@ -93,9 +93,9 @@ docker run --name PHPMyAdmin \
   -d phpmyadmin/phpmyadmin
 
 # 关闭（但不删除）
-docker stop PHPMyAdmin
+docker stop phpMyAdmin
 # 启用
-docker start PHPMyAdmin
+docker start phpMyAdmin
 ```
 
 注：
