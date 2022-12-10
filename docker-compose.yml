@@ -41,7 +41,7 @@ services:
             TZ: "Asia/Shanghai"
         volumes:
             - ./data:/var/lib/mysql:rw
-            - ./log/mysql/:/var/log/mysql/:rw
+            # - ./log/mysql/:/var/log/mysql/:rw
         networks:
             - net_web
 
