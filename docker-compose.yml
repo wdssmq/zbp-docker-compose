@@ -48,3 +48,6 @@ services:
 networks:
     net_web:
         external: false
+
+# 执行如下命令后可设置为 external: true
+# docker network create -d bridge net_web
