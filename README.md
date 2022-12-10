@@ -31,7 +31,7 @@ git clone https://github.com/wdssmq/zbp-docker-compose.git zbp-dc
 cd zbp-dc
 # 复制配置文件
 cp conf/common.env.sample conf/common.env
-cp conf/site_zbp.env.sample conf/site_zbp.env
+cp conf/site_zbp_def.env.sample conf/site_zbp_def.env
 # 「可选」映射 www 为其他路径
 ln -s /home/www www
 ```
@@ -40,7 +40,7 @@ ln -s /home/www www
 
 `common.env`内为数据库密码，zbp 和 MySQL 都要使用，两个变量值要一样；
 
-`site_zbp.env`内设置 zbp 管理员的用户名和密码；
+`site_zbp_def.env`内设置 zbp 管理员的用户名和密码；
 
 3、启动
 

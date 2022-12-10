@@ -2,7 +2,7 @@ version: '3'
 services:
 
     # Z-BlogPHP
-    zbp:
+    zbp_def:
         # build: ./build/zblogphp
         image: wdssmq/zblogphp
         restart: always
@@ -10,17 +10,17 @@ services:
             - "80:80"
         env_file:
             - ./conf/common.env
-            - ./conf/site_zbp.env
+            - ./conf/site_zbp_def.env
         environment:
             ZC_DB_HOST: MySQL
-            ZC_DB_NAME: docker_zbp
+            ZC_DB_NAME: docker_zbp_def
             ZC_DB_USER: root
             ZC_SKIP_TC_PLUGINS: 1
             TZ: "Asia/Shanghai"
         volumes:
-            - ./www/zbp:/app
-            # - ./log/nginx_zbp/:/var/log/nginx:rw
-            # - ./log/nginx_zbp/logs2:/var/lib/nginx/logs:rw
+            - ./www/zbp_def:/app
+            # - ./log/nginx_zbp_def/:/var/log/nginx:rw
+            # - ./log/nginx_zbp_def/logs2:/var/lib/nginx/logs:rw
         depends_on:
             - MySQL
         # links:
