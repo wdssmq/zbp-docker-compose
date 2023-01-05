@@ -30,6 +30,7 @@ services:
 
     # MySQL 5.7
     MySQL:
+        container_name: MySQL
         image: mysql/mysql-server:5.7
         restart: always
         ports:
