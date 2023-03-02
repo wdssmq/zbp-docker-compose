@@ -3,6 +3,7 @@ services:
 
     # Z-BlogPHP
     zbp_def:
+        container_name: zbp_def
         # build: ./build/zblogphp
         image: wdssmq/zblogphp
         restart: always
