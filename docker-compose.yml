@@ -42,7 +42,7 @@ services:
             MYSQL_ROOT_HOST: 172.%.%.%
             TZ: "Asia/Shanghai"
         volumes:
-            - ./data:/var/lib/mysql:rw
+            - ./mysql-data:/var/lib/mysql:rw
             # - ./log/mysql/:/var/log/mysql/:rw
         networks:
             - net_web
