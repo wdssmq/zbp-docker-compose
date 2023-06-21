@@ -19,7 +19,7 @@ services:
             ZC_SKIP_TC_PLUGINS: 1
             TZ: "Asia/Shanghai"
         volumes:
-            - ./www/zbp_def:/app
+            - ./data/www/zbp_def:/app
             # - ./log/nginx_zbp_def/:/var/log/nginx:rw
             # - ./log/nginx_zbp_def/logs2:/var/lib/nginx/logs:rw
         depends_on:
@@ -42,7 +42,7 @@ services:
             MYSQL_ROOT_HOST: 172.%.%.%
             TZ: "Asia/Shanghai"
         volumes:
-            - ./mysql-data:/var/lib/mysql:rw
+            - ./data/mysql:/var/lib/mysql:rw
             # - ./log/mysql/:/var/log/mysql/:rw
         networks:
             - net_web

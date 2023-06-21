@@ -33,7 +33,7 @@ cd zbp-dc
 cp conf/common.env.sample conf/common.env
 cp conf/site_zbp_def.env.sample conf/site_zbp_def.env
 # 「可选」映射 www 为其他路径
-ln -s /home/www www
+ln -s /home/wwwroot data/www
 ```
 
 2、配置`conf/*.env`变量
