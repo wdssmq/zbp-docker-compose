@@ -112,4 +112,7 @@ docker network ls
 # 4579b81d15b4   host             host      local
 # 2e9e3da577ef   none             null      local
 # a620eec8f4dc   zbp-dc_net_web   bridge    local
+
+# 调试命令
+sudo docker-compose down && rm -rf data/ && sudo docker-compose up
 ```
