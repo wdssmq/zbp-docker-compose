@@ -6,7 +6,7 @@ services:
         container_name: zbp_def
         # build: ./build/zblogphp
         image: wdssmq/zblogphp
-        restart: always
+        restart: unless-stopped
         ports:
             - "80:80"
         env_file:
@@ -33,7 +33,7 @@ services:
     MySQL:
         container_name: MySQL
         image: mysql/mysql-server:5.7
-        restart: always
+        restart: unless-stopped
         ports:
             - "3306:3306"
         env_file:
