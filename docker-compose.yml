@@ -4,7 +4,7 @@ services:
     # Z-BlogPHP
     zbp_def:
         container_name: zbp_def
-        # build: ./build/zblogphp
+        # build: ./build
         image: wdssmq/zblogphp
         restart: unless-stopped
         ports:

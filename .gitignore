@@ -1,5 +1,6 @@
 log
 www
 data
+build
 conf/*.env
 *.zip
