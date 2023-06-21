@@ -24,8 +24,6 @@ services:
             # - ./log/nginx_zbp_def/logs2:/var/lib/nginx/logs:rw
         depends_on:
             - MySQL
-        # links:
-        #   - MySQL
         networks:
             - net_web
 
