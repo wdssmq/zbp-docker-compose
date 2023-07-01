@@ -51,9 +51,26 @@ docker-compose up
 # 正式运行（后台启动）
 # docker-compose down
 docker-compose up -d
+
 ```
 
-4、其他命令
+4、备份及恢复
+
+理论上只需要备份 volumes 指定的宿主机目录即可，默认是`./data`目录；
+
+恢复时与 docker-compose.yml 文件在同一目录下，或者自行指定实际路径或符号连接；
+
+之后需要设置所需的文件权限，比如`data/www`目录需要`1000:1000`用户权限；
+
+```bash
+# 权限恢复，以实际路径为准
+sudo chown -R 1000:1000 data/www
+# MySQL 数据
+sudo chown -Rv 27:sudo data/mysql
+
+```
+
+5、其他命令
 
 ```bash
 # 查看配置
