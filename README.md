@@ -4,7 +4,7 @@
 
 ## 镜像
 
-Z-BlogPHP：`https://github.com/zblogcn/zblogphp-tencent-openapp-docker`
+Z-BlogPHP：[https://github.com/zblogcn/zblogphp-docker-image](https://github.com/zblogcn/zblogphp-docker-image "zblogcn/zblogphp-docker-image")
 
 MySQL：`mysql/mysql-server:5.7`
 
@@ -16,6 +16,7 @@ sudo curl -L https://github.com/docker/compose/releases/download/v2.4.1/docker-c
  -o /usr/local/bin/docker-compose
 sudo chmod +x /usr/local/bin/docker-compose
 docker-compose --version
+
 ```
 
 生成最新版 Docker Compose 安装命令：[https://demo.wdssmq.com/tools/GenShell/](https://demo.wdssmq.com/tools/GenShell/ "生成最新版 Docker Compose 安装命令")
@@ -27,13 +28,19 @@ docker-compose --version
 ```bash
 # 克隆项目文件
 git clone https://github.com/wdssmq/zbp-docker-compose.git zbp-dc
+
 # 进入项目文件夹
 cd zbp-dc
+
 # 复制配置文件
 cp conf/common.env.sample conf/common.env
 cp conf/site_zbp_def.env.sample conf/site_zbp_def.env
+
+# ---------------
+
 # 「可选」映射 www 为其他路径
 ln -s /home/wwwroot data/www
+
 ```
 
 2、配置`conf/*.env`变量
@@ -48,6 +55,7 @@ ln -s /home/wwwroot data/www
 # 初始运行，会输出各种日志；
 # ctrl + c 中止，可多次执行直到不报错
 docker-compose up
+
 # 正式运行（后台启动）
 # docker-compose down
 docker-compose up -d
@@ -65,6 +73,7 @@ docker-compose up -d
 ```bash
 # 权限恢复，以实际路径为准
 sudo chown -R 1000:1000 data/www
+
 # MySQL 数据
 sudo chown -Rv 27:sudo data/mysql
 
@@ -93,6 +102,7 @@ docker logs $container_name
 
 # 进入容器内部
 docker exec -it $container_name /bin/bash
+
 ```
 
 ### phpMyAdmin 连接管理数据库
@@ -111,8 +121,10 @@ docker run --name phpMyAdmin \
 
 # 关闭（但不删除）
 docker stop phpMyAdmin
+
 # 启用
 docker start phpMyAdmin
+
 ```
 
 注：
@@ -132,4 +144,5 @@ docker network ls
 
 # 调试命令
 sudo docker-compose down && rm -rf data/ && sudo docker-compose up
+
 ```
