@@ -9,12 +9,15 @@ services:
         restart: unless-stopped
         ports:
             - "80:80"
-        env_file:
-            - ./conf/common.env
-            - ./conf/site_zbp_def.env
+        # env_file:
+        #     - ./conf/common.env
+        #     - ./conf/site_zbp_def.env
         environment:
+            ZC_BLOG_PWDD: ${ZC_BLOG_PWDD_zbp_def:-pwdd_zbp_def}
+            ZC_BLOG_USER: ${ZC_BLOG_USER_zbp_def:-admin_zbp_def}
             ZC_DB_HOST: MySQL
             ZC_DB_NAME: docker_zbp_def
+            ZC_DB_PWDD: ${MYSQL_ROOT_PASSWORD:-shujukumima1233}
             ZC_DB_USER: root
             ZC_SKIP_TC_PLUGINS: 1
             TZ: "Asia/Shanghai"
@@ -32,10 +35,11 @@ services:
         restart: unless-stopped
         ports:
             - "3306:3306"
-        env_file:
-            - ./conf/common.env
+        # env_file:
+        #     - ./conf/common.env
         environment:
             MYSQL_ROOT_HOST: 172.%.%.%
+            MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD:-shujukumima1233}
             TZ: "Asia/Shanghai"
         volumes:
             - ./data-mysql:/var/lib/mysql:rw

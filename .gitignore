@@ -5,4 +5,5 @@ data-www
 data-mysql
 build
 conf/*.env
+.env
 *.zip
