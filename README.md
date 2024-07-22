@@ -33,21 +33,16 @@ git clone https://github.com/wdssmq/zbp-docker-compose.git zbp-dc
 cd zbp-dc
 
 # 复制配置文件
-cp conf/common.env.sample conf/common.env
-cp conf/site_zbp_def.env.sample conf/site_zbp_def.env
+cp .env.sample .env
 
-# ---------------
-
-# 「可选」映射 www 为其他路径
-ln -s /home/wwwroot data/www
 
 ```
 
-2、配置`conf/*.env`变量
+2、配置`.env`变量：
 
-`common.env`内为数据库密码，zbp 和 MySQL 都要使用，两个变量值要一样；
+- 数据库密码
+- Z-BlogPHP 用户名及密码
 
-`site_zbp_def.env`内设置 zbp 管理员的用户名和密码；
 
 3、启动
 
@@ -64,22 +59,45 @@ docker-compose up -d
 
 4、备份及恢复
 
-理论上只需要备份 volumes 指定的宿主机目录即可，默认是`./data`目录；
-
-恢复时与 docker-compose.yml 文件在同一目录下，或者自行指定实际路径或符号连接；
-
-之后需要设置所需的文件权限，比如`data/www`目录需要`1000:1000`用户权限；
 
 ```bash
-# 权限恢复，以实际路径为准
-sudo chown -R 1000:1000 data/www
+# 停用容器
+docker-compose down
 
-# MySQL 数据
-sudo chown -Rv 27:sudo data/mysql
+# 打包 zbp-dc 文件夹整体
+cd .. # 返回上级目录
+tar -czvf zbp-dc.tar.gz zbp-dc
 
 ```
 
-5、其他命令
+恢复时需要确保容器内文件权限：
+
+```bash
+# 权限恢复，以实际路径为准
+sudo chown -R 1000:1000 data-www
+
+# MySQL 数据
+sudo chown -Rv 27:sudo data-mysql
+
+```
+
+5、自定义 Nginx 配置
+
+```bash
+# 容器内复制相应文件到 data-nginx
+docker cp zbp_def:/opt/docker/etc/nginx/vhost.common.d data-nginx
+
+# docker-compose.yml 中启用相应的 volumes 映射后重启容器
+docker-compose restart
+
+# 修改 data-nginx 中的配置文件后可单独重启 Nginx
+docker exec -it zbp_def nginx -s reload
+
+# docker cp zbp_def:/opt/docker/etc/nginx data-nginx
+
+```
+
+6、其他命令
 
 ```bash
 # 查看配置
@@ -132,7 +150,7 @@ docker start phpMyAdmin
 - `-e PMA_HOST=MySQL`中`MySQL`为 docker-compose.yml 文件内定义的服务名；
 - `-e UPLOAD_LIMIT=4096K`用于设置导入文件的大小限制，可以按需要设置，比如`20M`；
 - `--network=zbp-dc_net_web`实际所需需要的值可以执行`docker network ls`查看；
-  - 就是使用执行路径文件夹的名字作为前缀，容器名也是；
+    - 默认情况下以文件夹名为前缀；
 
 ```bash
 docker network ls
@@ -143,6 +161,6 @@ docker network ls
 # a620eec8f4dc   zbp-dc_net_web   bridge    local
 
 # 调试命令
-sudo docker-compose down && rm -rf data/ && sudo docker-compose up
+sudo docker-compose down && rm -rf data-www/ data-mysql && sudo docker-compose up
 
 ```

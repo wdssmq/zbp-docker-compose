@@ -23,6 +23,7 @@ services:
             TZ: "Asia/Shanghai"
         volumes:
             - ./data-www/zbp_def:/app
+            # - ./data-nginx:/opt/docker/etc/nginx/vhost.common.d
         depends_on:
             - MySQL
         networks:
