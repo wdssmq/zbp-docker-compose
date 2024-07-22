@@ -1,6 +1,8 @@
 log
 www
 data
+data-www
+data-mysql
 build
 conf/*.env
 *.zip
