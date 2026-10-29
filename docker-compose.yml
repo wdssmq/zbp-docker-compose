@@ -8,9 +8,6 @@ services:
         restart: unless-stopped
         ports:
             - "80:80"
-        # env_file:
-        #     - ./conf/common.env
-        #     - ./conf/site_zbp_def.env
         environment:
             ZC_BLOG_PWDD: ${ZC_BLOG_PWDD_zbp_def:-pwdd_zbp_def}
             ZC_BLOG_USER: ${ZC_BLOG_USER_zbp_def:-admin_zbp_def}
@@ -34,8 +31,6 @@ services:
         restart: unless-stopped
         ports:
             - "3306:3306"
-        # env_file:
-        #     - ./conf/common.env
         environment:
             MYSQL_ROOT_HOST: 172.%.%.%
             MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD:-shujukumima1233}
