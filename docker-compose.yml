@@ -18,7 +18,6 @@ services:
             ZC_DB_NAME: docker_zbp_def
             ZC_DB_PWDD: ${MYSQL_ROOT_PASSWORD:-shujukumima1233}
             ZC_DB_USER: root
-            ZC_SKIP_TC_PLUGINS: 1
             TZ: "Asia/Shanghai"
         volumes:
             - ./data-www/zbp_def:/app
