@@ -7,7 +7,7 @@ services:
         image: wdssmq/zblogphp
         restart: unless-stopped
         ports:
-            - "80:80"
+            - "${PORT_zbp_def:-80}:80"
         environment:
             ZC_BLOG_PWDD: ${ZC_BLOG_PWDD_zbp_def:-pwdd_zbp_def}
             ZC_BLOG_USER: ${ZC_BLOG_USER_zbp_def:-admin_zbp_def}
@@ -26,7 +26,7 @@ services:
         networks:
             - net_web
 
-    # MySQL 5.7
+    # MySQL
     MySQL:
         container_name: MySQL
         image: mysql:8.4

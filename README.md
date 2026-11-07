@@ -42,6 +42,7 @@ cp .env.sample .env
 
 - 数据库密码
 - Z-BlogPHP 用户名及密码
+- Z-BlogPHP 容器的映射端口，默认 `80`
 - 预装应用（可选）：设置 `ZC_APPS_AUTO=1`，并在 `ZC_APP_URLS_CONFIG` 中每行填写一个「应用名=下载地址」，容器启动时自动安装
 
 
