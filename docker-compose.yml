@@ -9,8 +9,8 @@ services:
         ports:
             - "${PORT_zbp_def:-80}:80"
         environment:
-            ZC_BLOG_PWDD: ${ZC_BLOG_PWDD_zbp_def:-pwdd_zbp_def}
             ZC_BLOG_USER: ${ZC_BLOG_USER_zbp_def:-admin_zbp_def}
+            ZC_BLOG_PWDD: ${ZC_BLOG_PWDD_zbp_def:-pwdd_zbp_def}
             ZC_DB_HOST: MySQL
             ZC_DB_NAME: docker_zbp_def
             ZC_DB_PWDD: ${MYSQL_ROOT_PASSWORD:-shujukumima1233}
